@@ -10,13 +10,26 @@ formEl.addEventListener('input', throttle(onFormInput, 500));
 
 function onFormSubmit(evt) {
     evt.preventDefault();
-    const formData = new FormData(formEl);
 
-    formData.forEach((value, name) => console.log(`${name}: ===> ${value}`));
+    const email = formEl.elements.email.value;
+    const message = formEl.elements.message.value;
+
+    if (!email || !message) {
+        return alert("Пожалуйста, заполните все поля формы.");
+    }
+
+    const formData = {
+        email,
+        message,
+    };
+
+    console.log(formData);
+
     evt.currentTarget.reset();
 
     localStorage.removeItem(LOCALSTORAGE_KEY);
 }
+
 
 function onFormInput(evt) {
     let permanentFilters = localStorage.getItem(LOCALSTORAGE_KEY);
@@ -26,6 +39,7 @@ function onFormInput(evt) {
 
     localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(permanentFilters));
 }
+
 
 function initForm() {
     let permanentFilters = localStorage.getItem(LOCALSTORAGE_KEY);
