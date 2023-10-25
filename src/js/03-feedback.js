@@ -1,6 +1,6 @@
 import throttle from 'lodash.throttle';
 
-const LOCALSTORAGE_KEY = 'selectedFilters';
+const LOCALSTORAGE_KEY = "videoplayer-current-time";
 const formEl = document.querySelector('.feedback-form');
 
 initForm();

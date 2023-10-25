@@ -7,16 +7,10 @@ import "simplelightbox/dist/simple-lightbox.css";
 const galleryEl = document.querySelector(".gallery");
 
 const galleryStr = galleryItems
-    .map(
-        ({
-            description,
-            original,
-            preview,
-        }) => `<a class="gallery__item" href=${original}>
+    .map(({ description, original, preview, }) =>
+        `<a class="gallery__item" href=${original}>
   <img class="gallery__image" src=${preview} alt=${description} />
-</a>`
-    )
-    .join("");
+</a>`).join("");
 
 galleryEl.innerHTML = galleryStr;
 
